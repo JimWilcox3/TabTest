@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>28.0</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationId>com.mps.tabtest</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\drawable\borderdoublewidth.xml" />
+    <None Remove="Resources\drawable\circular_progress_bar.xml" />
+    <None Remove="Resources\layout\DataViewListItem.xml" />
+    <None Remove="Resources\layout\MessageDialogView.xml" />
+    <None Remove="Resources\layout\TabTestParentView.xml" />
+    <None Remove="Resources\layout\TabTestTabView.xml" />
+    <None Remove="Resources\values\colors.xml" />
+    <None Remove="Resources\values\styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="9.2.0" />
+    <PackageReference Include="MvvmCross.DroidX.Material" Version="9.2.0" />
+    <PackageReference Include="Serilog" Version="4.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TabTest.Core\TabTest.Core.csproj" />
+  </ItemGroup>
+</Project>
