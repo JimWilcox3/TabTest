@@ -12,6 +12,8 @@ namespace TabTest.Core.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
+        private string? Answer;
+
         private readonly IMvxNavigationService _navigationService;
         public MainViewModel(IMvxNavigationService navigationService)
         {
@@ -30,6 +32,12 @@ namespace TabTest.Core.ViewModels
                 };
                 await _navigationService.Navigate<MessageDialogViewModel, MessageDialogViewModel.Args>(args);
             });
+        }
+
+        public override Task Initialize()
+        {
+            Answer = "42";
+            return base.Initialize();
         }
 
         private string? _Title = "Tab Test";
@@ -51,6 +59,17 @@ namespace TabTest.Core.ViewModels
 
         public IMvxAsyncCommand DialogCommand { get; private set; }
 
+        protected override void SaveStateToBundle(IMvxBundle bundle)
+        {
+            base.SaveStateToBundle(bundle);
+            bundle.Data["Answer"] = Answer ?? "";
+        }
+
+        protected override void ReloadFromBundle(IMvxBundle state)
+        {
+            base.ReloadFromBundle(state);
+            Answer = state.Data["Answer"];
+        }
 
     }
 }
